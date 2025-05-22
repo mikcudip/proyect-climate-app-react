@@ -26,7 +26,6 @@ const WeatherApp = () => {
       const response = await fetch(targetURL);
       const data = await response.json();
       setWeatherData(data);
-      console.log(data);
     } catch (mistake) {
       console.error("Algo salio mal:" + mistake);
       return;
@@ -45,7 +44,7 @@ const WeatherApp = () => {
         />
         <button type="submit">Buscar</button>
       </form>
-      {weatherData && (
+      {weatherData && weatherData.cod === 200 && (
         <div>
           <h2>
             {weatherData.name}, {weatherData.sys.country}
